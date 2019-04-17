@@ -1,0 +1,151 @@
+\mode<presentation>
+
+%%%%%%%%%%%%%%
+%%
+%% Package requirements
+%%
+%%%%%%%%%%%%%%
+
+% Text encoding
+\usepackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+\RequirePackage{verbatim}
+\RequirePackage{textcomp}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{listings}
+\RequirePackage{ifthen}
+
+% Font encoding
+\RequirePackage{fontspec}
+
+% Color encoding
+\RequirePackage{xcolor}
+
+% Tikz
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows,decorations.pathmorphing}
+
+%%%%%%%%%%%%%%
+%%
+%% Color theme
+%%
+%%%%%%%%%%%%%%
+
+% color definitions
+\definecolor{dcachedarkblue}{HTML}{003172}
+\definecolor{dcacheblue}{HTML}{0073bd}
+\definecolor{dcachepink}{HTML}{c7254e}
+\definecolor{helmholtzgreenlight}{HTML}{80cd33}
+\definecolor{helmholtzgreen}{HTML}{7DA647}
+
+\setbeamercolor{title}{fg = helmholtzgreen}
+\setbeamercolor{frametitle}{fg = helmholtzgreen}
+\setbeamercolor{normal text}{fg = dcacheblue, bg = white}
+
+\setbeamercolor{item}{fg = dcacheblue}
+\setbeamercolor{subitem}{fg = dcacheblue}
+\setbeamercolor{subsubitem}{fg = dcacheblue}
+
+\setbeamercolor{caption}{fg = dcacheblue}
+\setbeamercolor{caption name}{fg = dcacheblue}
+
+\setbeamercolor{structure}{fg = dcacheblue}
+
+%%%%%%%%%%%%%%
+%%
+%% Font theme
+%%
+%%%%%%%%%%%%%%
+
+% URW Gothic L sometimes not available; use URW Gothic Demi or Liberation Serif instead
+\setmainfont{Liberation Serif}
+
+\setbeamerfont{frametitle}{size = \large, series=\bfseries}
+
+%%%%%%%%%%%%%%
+%%
+%% Inner theme
+%%
+%%%%%%%%%%%%%%
+
+\setbeamertemplate{itemize items}[circle] % alternative: square
+%\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%
+%%
+%% Outer theme
+%%
+%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+
+% General commands
+
+\newcommand{\MainTitle}[1]{\textbf{\large\color{helmholtzgreen} #1}}
+\newcommand{\MainSubTitle}[3]{\footnotesize{{#1} for {#2}\\ \vspace{-1mm}{#3}}}
+
+\newcommand{\CodeLine}[1]{\texttt{\color{gray}\footnotesize #1}}
+\newcommand{\Keyword}[1]{\textbf{\color{dcachepink}#1}}
+
+% Logo dCache in the top right corner
+
+\newcommand{\DcacheLogo}{%
+	\ifthenelse{\lengthtest{\beamer@paperwidth=16cm}}% condition (16cm is the width of the frame with an aspect ratio = 16:9)
+	{
+		\raisebox{-15mm}[0pt][0pt]{%
+			\begin{pgfpicture}{-90mm}{0mm}{0mm}{0mm}
+				\includegraphics[height=1.5cm,keepaspectratio=true]{img/dcache-banner.png}
+			\end{pgfpicture} }
+	}% do this if condition is true (ratio 16:9)
+	{
+		\raisebox{-15mm}[0pt][0pt]{%
+			\begin{pgfpicture}{-68mm}{0mm}{0mm}{0mm}
+				\includegraphics[height=1.3cm,keepaspectratio=true]{img/dcache-banner.png}
+			\end{pgfpicture} }
+	}% do this elsewhere (ratio 4:3)
+}
+	
+\setbeamertemplate{headline}{\DcacheLogo}
+
+% Footline layout
+
+\newcommand{\TextInFootline}{
+	\vspace{-4mm}
+	\color{helmholtzgreen}\fontsize{7pt}{7.2}\selectfont
+	\hfill\textbf{\inserttitle} | {\insertauthor} | \insertframenumber}
+
+\setbeamertemplate{footline}{
+	\raisebox{-2mm}[0pt][0pt]{
+		\begin{tikzpicture}[]
+		\draw[line width=0.35mm,helmholtzgreen] (0,-1) -- ++ (16,0);
+		\end{tikzpicture}
+	}
+	\vspace{4mm}
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}
+		\hspace*{4mm} \TextInFootline \hspace{4mm}
+	\end{beamercolorbox}}
+
+\newcommand{\EmptyFootline}{
+	\begin{tikzpicture}[]
+	\draw[line width=0.35mm,helmholtzgreen] (0,-1) -- ++ (16,0);
+	\end{tikzpicture}
+	\vspace{5mm}}
+
+% Logo group
+
+\newcommand{\LogoGroup}{
+\begin{tikzpicture}
+	\node at (0,0) (desy) {\includegraphics[height=1.5cm,keepaspectratio=true]{img/logo-desy}};
+	\node [right=0mm of desy] (fermilab) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fermilab}};
+	\node [right=-4mm of fermilab] (neic) {\includegraphics[height=2cm,keepaspectratio=true]{img/logo-neic}};
+	\node [above right=-12mm and -8mm of neic] (xdc) {\includegraphics[height=1.1cm,keepaspectratio=true]{img/logo-xdc}};
+	\node [below right=0mm and -18mm of desy] (lsdma) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-lsdma}};
+	\node [below=-2mm of xdc] (xdc) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fhw}};
+	\node [right=-4mm of lsdma] (helmholtz) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-helmholtz}};
+\end{tikzpicture}
+}
+
+
+\mode
+<all>

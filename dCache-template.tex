@@ -1,0 +1,60 @@
+\documentclass[english, presentation, aspectratio=169, 14pt]{beamer} % presentation/ handout
+\usetheme{dcache}
+
+%%%%%%%%%%%%%%%%%%%% Title Page Information %%%%%%%%%%%%%%%%%%%%
+
+\title{Why One Might Choose Beamer}
+\subtitle{dCache User Workshop 2019, Madrid, Spain}
+\author{User Name}
+\institute{dCache Team}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	{ % Use empty footline only for the current frame
+	\setbeamertemplate{footline}{\EmptyFootline}
+		
+	\begin{frame}
+		\centering
+		\vspace{15mm}
+		
+		% Title
+		\MainTitle{\inserttitle}\\
+		\vspace{3mm}
+		\MainSubTitle{\insertauthor}{\insertinstitute}{\insertsubtitle}
+		
+		% Logos at the bottom of the front page
+		\vfill
+		\flushright
+		\LogoGroup
+	\end{frame}
+	}
+
+	\begin{frame}[fragile]{How-To ASCII-Art dCache Style}
+		\begin{itemize}
+			\item \Keyword{info} admin command shows ASCII-art rendition of current data transfers
+			\item Example of \CodeLine{globus-url-copy} using the options \CodeLine{-no-g2 -p 5}
+		\end{itemize}\color{darkgray}
+\begin{lstlisting}[basicstyle=\tiny]
+  [prometheus] (GFTP-prometheus-AAVvh9jceUg@dCacheDomain) admin > info
+       User Host  : 131.169.214.58
+            User  : paul
+  [...]
+      Proxy status:
+                Client        +---------------------Adapter---------------------+        Pool
+  131.169.214.58:39233========| 131.169.5.149:21218         131.169.5.149:37083d|========131.169.5.149:40000
+  131.169.214.58:39237========| 131.169.5.149:21218                             |
+  131.169.214.58:39236========| 131.169.5.149:21218                             |
+  131.169.214.58:39234========| 131.169.5.149:21218                             |
+  131.169.214.58:39235========| 131.169.5.149:21218                             |
+                              +-------------------------------------------------+
+  TCP states: "========" means Established
+  GFTP-prometheus-AAVvh9jceUg@dCacheDoma[...]Receiving;12982;
+\end{lstlisting}\color{dcacheblue}
+	\end{frame}
+
+	\end{document}
+
+\end{document}
