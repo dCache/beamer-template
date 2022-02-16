@@ -61,7 +61,7 @@
 % URW Gothic L sometimes not available; use URW Gothic Demi or Liberation Serif instead
 \setmainfont{Liberation Serif}
 
-\setbeamerfont{frametitle}{size = \large, series=\bfseries}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
 
 %%%%%%%%%%%%%%
 %%
@@ -83,10 +83,12 @@
 % General commands
 
 \newcommand{\MainTitle}[1]{\textbf{\large\color{helmholtzgreen} #1}}
-\newcommand{\MainSubTitle}[3]{\footnotesize{{#1} for {#2}\\ \vspace{-1mm}{#3}}}
+\newcommand{\MainSubTitleAndAuthor}[2]{\small\textbf{#1}\\ {#2} for the dCache Collaboration}
+\newcommand{\MainSubTitle}[1]{\small\textbf{#1}\\}
+\newcommand{\NameAndAffiliation}[2]{{#1}, {#2}}
 
-\newcommand{\CodeLine}[1]{\texttt{\color{gray}\footnotesize #1}}
-\newcommand{\Keyword}[1]{\textbf{\color{dcachepink}#1}}
+\newcommand{\Code}[1]{\texttt{\color{gray}\footnotesize #1}}
+\newcommand{\Highlight}[1]{\textbf{\color{dcachepink}#1}}
 
 % Logo dCache in the top right corner
 
@@ -115,35 +117,36 @@
 	\color{helmholtzgreen}\fontsize{7pt}{7.2}\selectfont
 	\hfill\textbf{\inserttitle} | {\insertauthor} | \insertframenumber}
 
-\setbeamertemplate{footline}{
+\newcommand{\Footline}{
 	\raisebox{-2mm}[0pt][0pt]{
 		\begin{tikzpicture}[]
-		\draw[line width=0.35mm,helmholtzgreen] (0,-1) -- ++ (16,0);
+			\draw[line width=0.35mm,helmholtzgreen] (0,-1) -- ++ (16,0);
 		\end{tikzpicture}
-	}
-	\vspace{4mm}
-	\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}
-		\hspace*{4mm} \TextInFootline \hspace{4mm}
-	\end{beamercolorbox}}
+		}
+		\vspace{4mm}
+		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}
+			\hspace*{4mm} \TextInFootline \hspace{4mm}
+		\end{beamercolorbox}
+}
 
 \newcommand{\EmptyFootline}{
 	\begin{tikzpicture}[]
 	\draw[line width=0.35mm,helmholtzgreen] (0,-1) -- ++ (16,0);
 	\end{tikzpicture}
-	\vspace{5mm}}
+	\vspace{5mm}
+}
+
+\setbeamertemplate{footline}{\Footline}
 
 % Logo group
 
 \newcommand{\LogoGroup}{
-\begin{tikzpicture}
-	\node at (0,0) (desy) {\includegraphics[height=1.5cm,keepaspectratio=true]{img/logo-desy}};
-	\node [right=0mm of desy] (fermilab) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fermilab}};
-	\node [right=-4mm of fermilab] (neic) {\includegraphics[height=2cm,keepaspectratio=true]{img/logo-neic}};
-	\node [above right=-12mm and -8mm of neic] (xdc) {\includegraphics[height=1.1cm,keepaspectratio=true]{img/logo-xdc}};
-	\node [below right=0mm and -18mm of desy] (lsdma) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-lsdma}};
-	\node [below=-2mm of xdc] (xdc) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fhw}};
-	\node [right=-4mm of lsdma] (helmholtz) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-helmholtz}};
-\end{tikzpicture}
+	\begin{tikzpicture}
+		\node at (0,0) (desy) {\includegraphics[height=1.5cm,keepaspectratio=true]{img/logo-desy}};
+		\node [right=0mm of desy] (fermilab) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fermilab}};
+		\node [right=-4mm of fermilab] (neic) {\includegraphics[height=2cm,keepaspectratio=true]{img/logo-neic}};
+		\node [below right=-2mm and -16mm of desy] (helmholtz) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-helmholtz}};
+	\end{tikzpicture}
 }
 
 

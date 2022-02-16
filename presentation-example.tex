@@ -1,41 +1,43 @@
 \documentclass[english, presentation, aspectratio=169, 14pt]{beamer} % presentation/ handout
-\usetheme{dcache}
+\usetheme{dcachegrey}
 
 %%%%%%%%%%%%%%%%%%%% Title Page Information %%%%%%%%%%%%%%%%%%%%
 
-\title{Why One Might Choose Beamer}
-\subtitle{dCache User Workshop 2019, Madrid, Spain}
+\title{Why One Should Choose Beamer}
+\subtitle{dCache User Workshop 2022}
 \author{User Name}
-\institute{dCache Team}
+\institute{dCache Collaboration}
 \date{\today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-	
-	{ % Use empty footline only for the current frame
+
+	{ % Use empty headline and footline only for the current frame
 	\setbeamertemplate{footline}{\EmptyFootline}
 		
 	\begin{frame}
 		\centering
-		\vspace{15mm}
+		\vspace{30mm}
 		
 		% Title
 		\MainTitle{\inserttitle}\\
-		\vspace{3mm}
-		\MainSubTitle{\insertauthor}{\insertinstitute}{\insertsubtitle}
+		\vspace{4mm}
+		\MainSubTitle{\insertsubtitle}
+		{\insertauthor} for the \insertinstitute
 		
 		% Logos at the bottom of the front page
 		\vfill
+		\vspace{4mm}
 		\flushright
 		\LogoGroup
 	\end{frame}
 	}
 
-	\begin{frame}[fragile]{How-To ASCII-Art dCache Style}
+	\begin{frame}[fragile]{How-To ASCII-Art dCache}
 		\begin{itemize}
-			\item \Keyword{info} admin command shows ASCII-art rendition of current data transfers
-			\item Example of \CodeLine{globus-url-copy} using the options \CodeLine{-no-g2 -p 5}
+			\item \Highlight{info} admin command shows ASCII-art rendition of current data transfers
+			\item Example of \Code{globus-url-copy} using the options \Code{-no-g2 -p 5}
 		\end{itemize}\color{darkgray}
 \begin{lstlisting}[basicstyle=\tiny]
   [prometheus] (GFTP-prometheus-AAVvh9jceUg@dCacheDomain) admin > info
@@ -52,9 +54,33 @@
                               +-------------------------------------------------+
   TCP states: "========" means Established
   GFTP-prometheus-AAVvh9jceUg@dCacheDoma[...]Receiving;12982;
-\end{lstlisting}\color{dcacheblue}
+\end{lstlisting}
 	\end{frame}
 
-	\end{document}
+	\begin{frame}{Some slide}
+		\begin{itemize}
+			\item \Highlight{Highlight} something
+			\item Show off \Code{code examples}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Outlook}
+		\vspace{-2mm}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item Summary
+					\item With the trusted dCache user image
+					\item One last formula: $$\int_{f}^3 f(x) dx$$
+				\end{itemize}
+			\end{column}
+			\hspace{-4mm}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}
+					\includegraphics[width=0.8\textwidth]{img/dcache-user.png}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{frame}
 
 \end{document}

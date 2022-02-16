@@ -1,0 +1,156 @@
+\mode<presentation>
+
+%%%%%%%%%%%%%%
+%%
+%% Package requirements
+%%
+%%%%%%%%%%%%%%
+
+% Text encoding
+\usepackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+\RequirePackage{verbatim}
+\RequirePackage{textcomp}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{listings}
+\RequirePackage{ifthen}
+
+% Font encoding
+\RequirePackage{fontspec}
+
+% Color encoding
+\RequirePackage{xcolor}
+
+% Tikz
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows,decorations.pathmorphing}
+
+%%%%%%%%%%%%%%
+%%
+%% Color theme
+%%
+%%%%%%%%%%%%%%
+
+% color definitions
+\definecolor{dcachedarkblue}{HTML}{003172}
+\definecolor{dcacheblue}{HTML}{0073bd}
+\definecolor{dcachepink}{HTML}{c7254e}
+\definecolor{helmholtzgreenlight}{HTML}{80cd33}
+\definecolor{helmholtzgreen}{HTML}{7DA647}
+
+\definecolor{dcachefog}{HTML}{eaeaea}
+\definecolor{dcachelightgrey}{HTML}{5c5c57}
+\definecolor{dcachegrey}{HTML}{4c4e50}
+\definecolor{dcachered}{HTML}{e3513c}
+
+\setbeamercolor{title}{fg = dcachefog}
+\setbeamercolor{frametitle}{fg = dcachefog}
+\setbeamercolor{normal text}{fg = dcachegrey, bg = white}
+
+\setbeamercolor{item}{fg = dcachegrey}
+\setbeamercolor{subitem}{fg = dcachegrey}
+\setbeamercolor{subsubitem}{fg = dcachegrey}
+
+\setbeamercolor{caption}{fg = dcachegrey}
+\setbeamercolor{caption name}{fg = dcachegrey}
+
+\setbeamercolor{structure}{fg = dcachegrey}
+
+\setbeamercolor{secsubsec}{fg = dcachegrey, bg = dcachegrey}
+\setbeamercolor{shadow}{fg = dcachegrey, bg = dcachegrey}
+
+%%%%%%%%%%%%%%
+%%
+%% Font theme
+%%
+%%%%%%%%%%%%%%
+
+% URW Gothic L sometimes not available; use URW Gothic Demi, Liberation Sans or Liberation Serif instead
+\setmainfont{Liberation Serif}
+
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+
+%%%%%%%%%%%%%%
+%%
+%% Inner theme
+%%
+%%%%%%%%%%%%%%
+
+\setbeamertemplate{itemize items}[circle] % alternative: square
+%\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%
+%%
+%% Outer theme
+%%
+%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+
+% General commands
+
+\newcommand{\MainTitle}[1]{\textbf{\Large\color{dcachegrey} #1}}
+\newcommand{\MainSubTitle}[1]{\small\textbf{#1}\\}
+\newcommand{\MainSubTitleAndAuthor}[2]{\small\textbf{#1}\\ {#2} for the dCache Collaboration}
+
+\newcommand{\Code}[1]{\texttt{\color{gray}\footnotesize #1}}
+\newcommand{\Highlight}[1]{\textbf{\color{dcachered}#1}}
+
+
+% Background: banner and bird logo
+
+\setbeamertemplate{background} {
+	\begin{tikzpicture}
+		\draw[fill=dcachegrey] (0,0) rectangle (\beamer@paperwidth,1);
+		\node[] at (\beamer@paperwidth-20,0.45){
+			\includegraphics[height=0.75cm,keepaspectratio=true]{img/dCache-logo-grey.png}
+		};
+	\end{tikzpicture}
+}
+
+
+% Footline layout
+
+\newcommand{\TextInFootline}{
+	\vspace{-4mm}
+	\color{dcachegrey}\fontsize{7pt}{7.2}\selectfont
+	\hfill\textbf{\inserttitle} | {\insertauthor} | \insertframenumber}
+
+\newcommand{\Footline}{
+	\raisebox{-2mm}[0pt][0pt]{
+		\begin{tikzpicture}[]
+			\draw[line width=0.35mm,dcachelightgrey] (0,-1) -- ++ (16,0);
+		\end{tikzpicture}
+	}
+	\vspace{4mm}
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}
+		\hspace*{4mm} \TextInFootline \hspace{4mm}
+	\end{beamercolorbox}
+}
+
+\newcommand{\EmptyFootline}{
+	\begin{tikzpicture}[]
+		\draw[line width=0.35mm,dcachelightgrey] (0,-1) -- ++ (16,0);
+	\end{tikzpicture}
+	\vspace{5mm}
+}
+
+\setbeamertemplate{footline}{\Footline}
+
+
+% Logo group
+
+\newcommand{\LogoGroup}{
+	\begin{tikzpicture}
+		\node at (0,0) (desy) {\includegraphics[height=1.5cm,keepaspectratio=true]{img/logo-desy}};
+		\node [right=0mm of desy] (fermilab) {\includegraphics[height=1.3cm,keepaspectratio=true]{img/logo-fermilab}};
+		\node [right=-4mm of fermilab] (neic) {\includegraphics[height=2cm,keepaspectratio=true]{img/logo-neic}};
+		\node [below right=-2mm and -16mm of desy] (helmholtz) {\includegraphics[height=1cm,keepaspectratio=true]{img/logo-helmholtz}};
+	\end{tikzpicture}
+}
+
+
+
+\mode
+<all>
